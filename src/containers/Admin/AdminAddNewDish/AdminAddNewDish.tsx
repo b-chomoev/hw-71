@@ -13,7 +13,7 @@ const AdminAddNewDish = () => {
 
   const addDish = async (dish: ApiDish) => {
     await dispatch(addNewDish({...dish}));
-    navigate('/');
+    navigate('/admin/dishes');
     toast.success("Dish was added successfully");
   };
 
