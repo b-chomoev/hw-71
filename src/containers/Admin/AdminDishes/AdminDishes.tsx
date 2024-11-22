@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { selectAllDishes, selectFetchingDishesLoading } from '../../../store/slices/dishSlice';
 import { useCallback, useEffect } from 'react';
-import { fetchingAllDishes } from '../../../store/thunks/dishThunks';
+import { deleteDishById, fetchingAllDishes } from '../../../store/thunks/dishThunks';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 
 const AdminDishes = () => {
@@ -19,6 +19,14 @@ const AdminDishes = () => {
       void fetchDishes();
     }
   }, [fetchDishes]);
+
+  const deleteDish = async (id: string | undefined) => {
+    if (id) {
+      await dispatch(deleteDishById(id));
+    }
+
+    await fetchDishes();
+  };
 
   return (
     <div>
@@ -41,7 +49,7 @@ const AdminDishes = () => {
                       </div>
                     </div>
                     <div className='ms-5 row'>
-                      <button className='btn btn-danger mb-2'>Delete</button>
+                      <button className='btn btn-danger mb-2' onClick={() => deleteDish(dish.id)}>Delete</button>
                       <button className='btn btn-primary'>Edit</button>
                     </div>
                   </div>

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IDish } from '../../types';
-import { addNewDish, fetchingAllDishes } from '../thunks/dishThunks';
+import { addNewDish, deleteDishById, fetchingAllDishes } from '../thunks/dishThunks';
 import { RootState } from '../../app/store';
 
 interface DishState {
@@ -8,6 +8,7 @@ interface DishState {
   loading: {
     isAdding: boolean,
     isFetching: boolean,
+    isDeleting: boolean,
   }
 }
 
@@ -16,12 +17,14 @@ const initialState: DishState = {
   loading: {
     isAdding: false,
     isFetching: false,
+    isDeleting: false,
   }
 };
 
 export const selectAddDishLoading = (state: RootState) => state.dish.loading.isAdding;
 export const selectFetchingDishesLoading = (state: RootState) => state.dish.loading.isAdding;
 export const selectAllDishes = (state: RootState) => state.dish.dishes;
+export const selectDeleteDishLoading = (state: RootState) => state.dish.loading.isDeleting;
 
 export const dishSlice = createSlice({
   name: 'dish',
@@ -46,6 +49,15 @@ export const dishSlice = createSlice({
         state.dishes = action.payload;
       })
       .addCase(fetchingAllDishes.rejected, (state) => {
+        state.loading.isAdding = false;
+      })
+      .addCase(deleteDishById.pending, (state) => {
+        state.loading.isAdding = true;
+      })
+      .addCase(deleteDishById.fulfilled, (state) => {
+        state.loading.isAdding = false;
+      })
+      .addCase(deleteDishById.rejected, (state) => {
         state.loading.isAdding = false;
       });
   }

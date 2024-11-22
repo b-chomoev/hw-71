@@ -11,7 +11,7 @@ interface Props {
 const ButtonLoading: React.FC<Props> = ({isLoading = false, text, type = 'submit', isDisabled = false}) => {
   return (
     <>
-      <button disabled={isDisabled} type={type} className="btn btn-dark d-flex align-items-center">
+      <button disabled={isDisabled} type={type} className="btn btn-primary d-flex align-items-center">
         <span className='me-2'>{text}</span>
         {isLoading ? <ButtonSpinner/> : null}
       </button>
