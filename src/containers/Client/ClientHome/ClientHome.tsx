@@ -23,27 +23,38 @@ const ClientHome = () => {
     <>
       {fetchLoading ? <Spinner/> :
         <>
-          {allDishes.length === 0 ? <h4>No Dishes yet</h4> :
-            <>
-              <div className='d-flex justify-content-between align-items-center'>
-                <h3>Dishes</h3>
-              </div>
-              {allDishes.map(dish => (
-                <div key={dish.id} className="mt-3 border border-1 border-primary rounded-3 p-1 mb-3 w-50 mx-auto d-flex justify-content-evenly align-items-center">
-                  <div><img src={dish.urlImage} alt="Pizza Image" style={{width: 150}} className='rounded' /></div>
-                  <div className='d-flex justify-content-between align-items-center text-center'>
-                    <div>
-                      <h4 className="ps-3">{dish.title}</h4>
-                      <div>
-                        <p>{dish.price} $</p>
-                        <button className='btn btn-primary'>Add to Cart</button>
+          <div className='row justify-content-between'>
+            <div className='col col-md-6 mb-2'>
+              {allDishes.length === 0 ? <h4>No Dishes yet</h4> :
+                <>
+                  <h2>Menu</h2>
+                  {allDishes.map(dish => (
+                    <div key={dish.id} className="card mb-3 p-4">
+                      <div className="row justify-content-between">
+                        <div className='col-5'>
+                          <img src={dish.urlImage} alt="Pizza Image" style={{width: 150}} className="rounded"/>
+                        </div>
+                        <div className='col-6'>
+                          <div>
+                            <h4 className="card-title">{dish.title}</h4>
+                            <div>
+                              <p className='card-text'>{dish.price} $</p>
+                            </div>
+                            <div className='row justify-content-between row-cols-2'>
+                              <button className="mt-3 btn btn-primary">Add to Cart</button>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              ))}
-            </>
-          }
+                  ))}
+                </>
+              }
+            </div>
+            <div className='col col-md-5 mb-2'>
+              <h2>Cart</h2>
+            </div>
+          </div>
         </>
       }
     </>
