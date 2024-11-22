@@ -1,6 +1,6 @@
 interface IDish {
   id: string;
-  name: string;
+  title: string;
   price: number;
   urlImage: string;
 }
@@ -11,4 +11,6 @@ interface IDishMutation {
   urlImage: string;
 }
 
-export type ApiDish = Omit<IDishMutation, 'id'>;
+export interface ApiDish {
+  [id: string]: IDish;
+}
