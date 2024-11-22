@@ -5,7 +5,7 @@ const AdminDishes = () => {
     <>
       <div className='d-flex justify-content-between align-items-center'>
         <h3>Dishes</h3>
-        <NavLink to='/admin/edit-dishes' className='btn btn-primary'>Add new Dish</NavLink>
+        <NavLink to='/admin/new-dishes' className='btn btn-primary'>Add new Dish</NavLink>
       </div>
     </>
   );

@@ -5,6 +5,7 @@ import AdminHome from './containers/Admin/AdminHome/AdminHome';
 import AdminDishes from './containers/Admin/AdminDishes/AdminDishes';
 import AdminEditDishes from './containers/Admin/AdminEditDishes/AdminEditDishes';
 import AdminOrders from './containers/Admin/AdminOrders/AdminOrders';
+import AdminAddNewDish from './containers/Admin/AdminAddNewDish/AdminAddNewDish';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route path='/' element={<HomeClient/>} />
           <Route path='/admin' element={<AdminHome/>} />
           <Route path='/admin/dishes' element={<AdminDishes/>} />
+          <Route path='/admin/new-dishes' element={<AdminAddNewDish />} />
           <Route path='/admin/edit-dishes' element={<AdminEditDishes/>} />
           <Route path='/admin/orders' element={<AdminOrders/>} />
           <Route path='*' element={<h1>Not Found</h1>} />
