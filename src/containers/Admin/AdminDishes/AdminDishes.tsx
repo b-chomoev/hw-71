@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { selectAllDishes, selectFetchingDishesLoading } from '../../../store/slices/dishSlice';
+import { selectAllDishes, selectDeleteDishLoading, selectFetchingDishesLoading } from '../../../store/slices/dishSlice';
 import { useCallback, useEffect } from 'react';
 import { deleteDishById, fetchingAllDishes } from '../../../store/thunks/dishThunks';
 import Spinner from '../../../components/UI/Spinner/Spinner';
@@ -9,6 +9,7 @@ const AdminDishes = () => {
   const dispatch = useAppDispatch();
   const allDishes = useAppSelector(selectAllDishes);
   const fetchLoading = useAppSelector(selectFetchingDishesLoading);
+  const deleteLoading = useAppSelector(selectDeleteDishLoading);
 
   const fetchDishes = useCallback(async () => {
     await dispatch(fetchingAllDishes());
@@ -30,7 +31,7 @@ const AdminDishes = () => {
 
   return (
     <div>
-      {fetchLoading ? <Spinner/> :
+      {fetchLoading || deleteLoading ? <Spinner/> :
         <>
           {allDishes.length === 0 ? <h4>No Dishes yet</h4> :
             <>
@@ -50,7 +51,7 @@ const AdminDishes = () => {
                     </div>
                     <div className='ms-5 row'>
                       <button className='btn btn-danger mb-2' onClick={() => deleteDish(dish.id)}>Delete</button>
-                      <button className='btn btn-primary'>Edit</button>
+                      <NavLink to={`/admin/dishes/edit-dish/${dish.id}`} className='btn btn-primary'>Edit</NavLink>
                     </div>
                   </div>
 
@@ -60,8 +61,6 @@ const AdminDishes = () => {
           }
         </>
       }
-
-
     </div>
   );
 };

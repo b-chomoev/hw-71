@@ -1,5 +1,5 @@
 interface IDish {
-  id: string;
+  id?: string;
   title: string;
   price: number;
   urlImage: string;

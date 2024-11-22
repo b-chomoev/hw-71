@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { ApiDish, IDishMutation } from '../../types';
+import { IDishMutation } from '../../types';
 import ButtonLoading from '../UI/ButtonLoading/ButtonLoading';
 
 interface DishFormProps {
-  addNewDish: (newDish: ApiDish) => void;
+  addNewDish: (newDish: IDishMutation) => void;
   existingDish?: IDishMutation;
   isEdit?: boolean;
   isLoading?: boolean;

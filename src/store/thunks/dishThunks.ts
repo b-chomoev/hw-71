@@ -33,3 +33,23 @@ export const deleteDishById = createAsyncThunk<void, string>(
     await axiosAPI.delete(`dishesPizza/${id}.json`);
   }
 );
+
+export const getOneDishById = createAsyncThunk(
+  'dish/getOneDishById',
+  async (id: string) => {
+    const response = await axiosAPI.get<IDish>(`dishesPizza/${id}.json`);
+
+    if (!response.data) {
+      return null;
+    }
+
+    return response.data;
+  }
+);
+
+export const editDish = createAsyncThunk<void, {dishId: string, dish: IDish}>(
+  'dish/editDish',
+  async ({dishId, dish}) => {
+    await axiosAPI.put(`dishesPizza/${dishId}.json`, {...dish});
+  }
+);

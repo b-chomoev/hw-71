@@ -16,7 +16,7 @@ const App = () => {
           <Route path='/admin' element={<AdminHome/>} />
           <Route path='/admin/dishes' element={<AdminDishes/>} />
           <Route path='/admin/new-dishes' element={<AdminAddNewDish />} />
-          <Route path='/admin/edit-dishes' element={<AdminEditDishes/>} />
+          <Route path='/admin/dishes/edit-dish/:id' element={<AdminEditDishes/>} />
           <Route path='/admin/orders' element={<AdminOrders/>} />
           <Route path='*' element={<h1>Not Found</h1>} />
         </Routes>
