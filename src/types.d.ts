@@ -1,7 +1,14 @@
-import axios from 'axios';
+interface IDish {
+  id: string;
+  name: string;
+  price: number;
+  urlImage: string;
+}
 
-const axiosAPI = axios.create({
-  baseURL: 'https://beks-server-default-rtdb.firebaseio.com/',
-});
+interface IDishMutation {
+  title: string;
+  price: number;
+  urlImage: string;
+}
 
-export default axiosAPI;
+export type ApiDish = Omit<IDishMutation, 'id'>;
