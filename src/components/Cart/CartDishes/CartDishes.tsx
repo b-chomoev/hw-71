@@ -7,8 +7,11 @@ interface Props {
 }
 
 const CartDishes: React.FC<Props> = ({cart}) => {
+  const deliveryPrice = 150;
+
   const total = cart.reduce((acc, cartDish) => {
     acc = acc + cartDish.dish.price * cartDish.amount;
+    acc = acc + deliveryPrice;
     return acc;
   }, 0);
 
@@ -24,8 +27,11 @@ const CartDishes: React.FC<Props> = ({cart}) => {
         {cart.map(cartDish => (
           <CartItem key={cartDish.dish.id} cartDish={cartDish}/>
         ))}
+        <div className='row row-cols-2 align-items-center justify-content-between px-3'>
+          <div className='text-start p-0'><strong>Delivery: </strong></div>
+          <div className='text-end p-0'>{deliveryPrice} USD</div>
+        </div>
         <hr/>
-
         <div className='row row-cols-2 align-items-center justify-content-between px-3'>
           <div className='text-start p-0'><strong>Total: </strong></div>
           <div className='text-end p-0'>{total} USD</div>

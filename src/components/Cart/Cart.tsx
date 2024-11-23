@@ -14,7 +14,9 @@ const Cart = () => {
     <div>
       <Modal show={showModal} closeModal={() => setShowModal(false)} title="Order" defaultModalBtn={false}>
         <div className="modal-body">
-          <p>Do you want to continue to checkout?</p>
+          <div>
+            <CartDishes cart={cartDishes}/>
+          </div>
         </div>
         <div className="text-end">
           <button className="btn btn-dark" onClick={() => navigate('/checkout')}>Order</button>
