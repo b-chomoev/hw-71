@@ -3,6 +3,8 @@ import { selectAllDishes, selectFetchingDishesLoading } from '../../../store/sli
 import { useCallback, useEffect } from 'react';
 import { fetchingAllDishes } from '../../../store/thunks/dishThunks';
 import Spinner from '../../../components/UI/Spinner/Spinner';
+import Cart from '../../../components/Cart/Cart';
+import { addDish } from '../../../store/slices/cartSlice';
 
 const ClientHome = () => {
   const dispatch = useAppDispatch();
@@ -41,7 +43,7 @@ const ClientHome = () => {
                               <p className='card-text'>{dish.price} $</p>
                             </div>
                             <div className='row justify-content-between row-cols-2'>
-                              <button className="mt-3 btn btn-primary">Add to Cart</button>
+                              <button className="mt-3 btn btn-primary" onClick={() => dispatch(addDish(dish))}>Add to Cart</button>
                             </div>
                           </div>
                         </div>
@@ -53,6 +55,7 @@ const ClientHome = () => {
             </div>
             <div className='col col-md-5 mb-2'>
               <h2>Cart</h2>
+              <Cart />
             </div>
           </div>
         </>

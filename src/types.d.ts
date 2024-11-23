@@ -14,3 +14,8 @@ interface IDishMutation {
 export interface ApiDish {
   [id: string]: IDish;
 }
+
+export interface DishCart {
+  dish: IDish;
+  amount: number;
+}
