@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import Modal from '../UI/Modal/Modal';
-import { useNavigate } from 'react-router-dom';
 import CartDishes from './CartDishes/CartDishes';
 import { useAppSelector } from '../../app/hooks';
 import { selectCartDishes } from '../../store/slices/cartSlice';
 
 const Cart = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const navigate = useNavigate();
   const cartDishes = useAppSelector(selectCartDishes);
 
   return (
@@ -19,8 +17,8 @@ const Cart = () => {
           </div>
         </div>
         <div className="text-end">
-          <button className="btn btn-dark" onClick={() => navigate('/checkout')}>Order</button>
-          <button className="btn btn-dark" onClick={() => navigate('/')}>Cancel</button>
+          <button className="btn btn-primary me-3">Order</button>
+          <button className="btn btn-danger" onClick={() => setShowModal(false)}>Cancel</button>
         </div>
       </Modal>
 

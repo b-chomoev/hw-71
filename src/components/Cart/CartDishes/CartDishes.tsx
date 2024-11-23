@@ -7,13 +7,12 @@ interface Props {
 }
 
 const CartDishes: React.FC<Props> = ({cart}) => {
-  const deliveryPrice = 150;
+  const deliveryPrice = 15;
 
   const total = cart.reduce((acc, cartDish) => {
-    acc = acc + cartDish.dish.price * cartDish.amount;
-    acc = acc + deliveryPrice;
+    acc = acc + (cartDish.dish.price * cartDish.amount);
     return acc;
-  }, 0);
+  }, deliveryPrice);
 
   let cartList = (
     <div className='alert alert-success' role='alert'>
