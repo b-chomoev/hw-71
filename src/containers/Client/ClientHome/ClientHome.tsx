@@ -43,7 +43,7 @@ const ClientHome = () => {
                               <p className='card-text'>{dish.price} $</p>
                             </div>
                             <div className='row justify-content-between row-cols-2'>
-                              <button className="mt-3 btn btn-primary" onClick={() => dispatch(addDish(dish))}>Add to Cart</button>
+                              <button className="mt-3 btn btn-success" onClick={() => dispatch(addDish(dish))}>Add to Cart</button>
                             </div>
                           </div>
                         </div>
